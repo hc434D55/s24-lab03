@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
-
 /**
  * TODO:
  * 1. The {@link LinkedIntQueue} has no bugs. We've provided you with some
@@ -116,5 +115,28 @@ public class IntQueueTest {
         }
     }
 
+    @Test
+    public void testClear() {
+        for (int i = 0; i < testList.size(); i++) {
+            mQueue.enqueue(testList.get(i));
+        }
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+    }
 
+    @Test
+    public void testLongQueueEnqueue() {
+        int i = 0;
+        for (; i < 10; i++) {
+            mQueue.enqueue(i);
+            assertEquals(Integer.valueOf(0), mQueue.peek());
+            assertEquals(i + 1, mQueue.size());
+        }
+        assertEquals(Integer.valueOf(0), mQueue.dequeue());
+        for (; i < 25; i++) {
+            mQueue.enqueue(i);
+            assertEquals(Integer.valueOf(1), mQueue.peek());
+            assertEquals(i, mQueue.size());
+        }
+    }
 }
